@@ -1,14 +1,7 @@
-let categoryUrl =
-  "https://www.lini.dev/wp-json/wp/v2/categories?per_page=50";
 let postsUrl =
   "https://www.lini.dev/wp-json/wp/v2/posts?per_page=50";
-let tagsUrl =
-  "https://www.lini.dev/wp-json/wp/v2/tags?per_page=50";
-
-
-
-
-document.querySelector("body").onload = startProcess();
+let singlePost =
+  "https://www.lini.dev/wp-json/wp/v2/posts/?slug="
 
 
 /**
@@ -30,25 +23,49 @@ document.querySelector("body").onload = startProcess();
     }
   }
 
-
-  async function startProcess() {
-    tag = await fetchApi(tagsUrl);
+/**
+ * home page instant function
+ */
+  async function startProcessHome() {
     posts = await fetchApi(postsUrl);
-    category = await fetchApi(categoryUrl);
-    console.log(category);
-    console.log(tag);
     console.log(posts);
-    console.log(posts[0].content)
-    displayContent(posts);
+    displayContentHomePage(posts);
     
   }
 
-
-function displayContent() {
+/**
+ * makes content for home page
+ */
+function displayContentHomePage() {
     let siteTest = document.querySelector("body");
     for (let i = 0; i < posts.length; i++) {
-        siteTest.innerHTML += `<h1>${posts[i].slug}</h1>` + posts[i].content.rendered;
+        siteTest.innerHTML += `<h1>${posts[i].title.rendered}</h1>` + posts[i].excerpt.rendered + `<a class ="hyperlink" href="post.html?${posts[i].slug}" >Read more</a>`;
     }
 
     
 }
+
+
+/**
+ * post page function
+ */
+ async function postPage() {
+  let query = location.search;
+  if (!query) return location.href = "index.html";
+  document.title = `My blog |${query.replace(/[?-]/g, " ")}`;
+
+
+ fullPost = await fetchApi(singlePost + query)
+ console.log(fullPost);
+ displayPost(fullPost);
+ };
+
+
+ function displayPost() {
+  let PostBody = document.querySelector(".content");
+
+  PostBody.innerHTML = `<h1>${fullPost[0].title.rendered}</h1>` + fullPost[0].content.rendered;
+
+
+   
+ }
