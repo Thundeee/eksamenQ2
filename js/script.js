@@ -1,5 +1,9 @@
-let postsUrl = "https://www.lini.dev/wp-json/wp/v2/posts?per_page=50";
+let alrPosted = 0;
+let postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
+const postsUrl = "https://www.lini.dev/wp-json/wp/v2/posts?per_page=50";
 let singlePost = "https://www.lini.dev/wp-json/wp/v2/posts/?slug=";
+
+
 
 const form = document.querySelector("form#contactInfo");
 
@@ -28,14 +32,14 @@ async function fetchApi(api) {
 async function fetchAll() {
   posts = await fetchApi(postsUrl);
   console.log(posts);
-  displayAllPosts(posts);
+  displayMultiplePosts(posts);
 }
 
 /**
- * makes content for home page
+ * function that displays more than 1 post at a time
  */
-function displayAllPosts() {
-  let siteTest = document.querySelector("body");
+function displayMultiplePosts() {
+  let siteTest = document.querySelector(".container");
   for (let i = 0; i < posts.length; i++) {
     let title = posts[i].title.rendered;
     let iconImg = posts[i].better_featured_image.source_url;
@@ -182,3 +186,28 @@ function resetter() {
   emailInp.style.border = "";
   msgContentInp.style.border = "";
 }
+
+
+
+/**
+ * list
+ */
+
+ async function fetchList() {
+  posts = await fetchApi(postList);
+  console.log(posts);
+  displayMultiplePosts(posts);
+
+
+
+}
+
+
+function testTrykk() {
+  alrPosted += 10;
+  postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
+    fetchList();
+    console.log(alrPosted)
+    console.log(postList)
+  }
+
