@@ -1,7 +1,7 @@
 let postsUrl =
-  "https://www.lini.dev/wp-json/wp/v2/posts?per_page=50";
+  "https://www.lini.dev/wp-json/wp/v2/posts?_embed&per_page=50";
 let singlePost =
-  "https://www.lini.dev/wp-json/wp/v2/posts/?slug="
+  "https://www.lini.dev/wp-json/wp/v2/posts/?_embed&slug="
 
 
 /**
@@ -39,7 +39,9 @@ let singlePost =
 function displayContentHomePage() {
     let siteTest = document.querySelector("body");
     for (let i = 0; i < posts.length; i++) {
-        siteTest.innerHTML += `<h1>${posts[i].title.rendered}</h1>` + posts[i].excerpt.rendered + `<a class ="hyperlink" href="post.html?${posts[i].slug}" >Read more</a>`;
+      let title = posts[i].title.rendered;
+      let iconImg = posts[i]._embedded["wp:featuredmedia"][0].source_url;
+        siteTest.innerHTML += `<h1>${title}</h1>` + posts[i].excerpt.rendered + "<img src=" + iconImg + "/> <br>"  + `<a class ="hyperlink" href="post.html?${posts[i].slug}" >Read more</a>`;
     }
 
     
@@ -63,8 +65,9 @@ function displayContentHomePage() {
 
  function displayPost() {
   let PostBody = document.querySelector(".content");
+  let iconImg = fullPost[0]._embedded["wp:featuredmedia"][0].source_url;
 
-  PostBody.innerHTML = `<h1>${fullPost[0].title.rendered}</h1>` + fullPost[0].content.rendered;
+  PostBody.innerHTML = `<h1>${fullPost[0].title.rendered}</h1>` + fullPost[0].content.rendered + "<img src=" + iconImg + "/>"
 
 
    
