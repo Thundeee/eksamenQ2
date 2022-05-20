@@ -1,11 +1,27 @@
-let alrPosted = 0;
-let postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
+// api links
 const postsUrl = "https://www.lini.dev/wp-json/wp/v2/posts?per_page=50";
 let singlePost = "https://www.lini.dev/wp-json/wp/v2/posts/?slug=";
 
+// list of posts stuff
+let alrPosted = 0;
+let postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
 
 
+
+
+// contact page stuff
 const form = document.querySelector("form#contactInfo");
+
+let nameInp = document.querySelector("input#name");
+let subjectInp = document.querySelector("input#subject");
+let emailInp = document.querySelector("input#email");
+let msgContentInp = document.querySelector("input#msgContent");
+
+let nameMsg = document.querySelector("span#nameMsg");
+let subjectMsg = document.querySelector("span#subjectMsg");
+let emailMsg = document.querySelector("span#emailMsg");
+let msgContentMsg = document.querySelector("span#msgContentMsg");
+
 
 /**
  * universal function to fetch
@@ -83,6 +99,7 @@ function displayPost() {
  */
 
 function contactPage() {
+  
   // stops the submit and goes through all info given to see if there are any errors
   form.addEventListener("submit", validate);
 
@@ -94,16 +111,6 @@ function contactPage() {
  */
 function validate(event) {
   event.preventDefault();
-
-  let nameInp = document.querySelector("input#name");
-  let subjectInp = document.querySelector("input#subject");
-  let emailInp = document.querySelector("input#email");
-  let msgContentInp = document.querySelector("input#msgContent");
-
-  let nameMsg = document.querySelector("span#nameMsg");
-  let subjectMsg = document.querySelector("span#subjectMsg");
-  let emailMsg = document.querySelector("span#emailMsg");
-  let msgContentMsg = document.querySelector("span#msgContentMsg");
 
   let contactHeader = document.getElementById("contactHeader");
 
@@ -207,6 +214,7 @@ async function testTrykk() {
   alrPosted += 10;
   postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
     await fetchList();
+    console.log(posts.length + "rngueiu")
    if (posts.length < 10) {
    postBtn = document.getElementById("morePosts");
   postBtn.style = "display: none;"
