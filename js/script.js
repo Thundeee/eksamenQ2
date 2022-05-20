@@ -203,10 +203,14 @@ function resetter() {
 }
 
 
-function testTrykk() {
+async function testTrykk() {
   alrPosted += 10;
   postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
-    fetchList();
+    await fetchList();
+   if (posts.length < 10) {
+   postBtn = document.getElementById("morePosts");
+  postBtn.style = "display: none;"
+   };
     console.log(alrPosted)
     console.log(postList)
   }
