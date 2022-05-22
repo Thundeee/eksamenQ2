@@ -1,6 +1,7 @@
 // api links
 const postsUrl = "https://www.lini.dev/wp-json/wp/v2/posts?per_page=50";
 let singlePost = "https://www.lini.dev/wp-json/wp/v2/posts/?slug=";
+let mediaPost = "https://www.lini.dev/wp-json/wp/v2/media?per_page=50&slug=";
 
 // list of posts stuff
 let alrPosted = 0;
@@ -64,7 +65,7 @@ function displayMultiplePosts() {
       posts[i].excerpt.rendered +
       "<img src=" +
       iconImg +
-      "/> <br>" +
+      ` alt = "${posts[i].title.rendered} Crest" > <br>` +
       `<a class ="hyperlink" href="post.html?${posts[i].slug}" >Read more</a>` + "</div";
   }
 }
@@ -76,23 +77,29 @@ async function postPage() {
   let query = location.search;
   if (!query) return (location.href = "index.html");
   document.title = `My blog |${query.replace(/[?-]/g, " ")}`;
-
+let imgTest = query + "Hero";
+  fullImage = await fetchApi(mediaPost + imgTest);
   fullPost = await fetchApi(singlePost + query);
-  console.log(fullPost);
-  displayPost(fullPost);
+  displayPost(fullPost, fullImage);
 }
 
 function displayPost() {
   let PostBody = document.querySelector(".content");
   let iconImg = fullPost[0].better_featured_image.source_url;
+  let heroImg = fullImage[0].guid.rendered;
 
   PostBody.innerHTML =
     `<h1>${fullPost[0].title.rendered}</h1>` +
+    "<img src=" +
+    heroImg +
+    ` alt = " Picture of ${fullPost[0].title.rendered}" > <br>` +
     fullPost[0].content.rendered +
     "<img src=" +
-    iconImg +
-    "/>";
+      iconImg +
+      ` alt = "${fullPost[0].title.rendered} Crest" > <br>`
 }
+
+
 
 /**
  * contact page
