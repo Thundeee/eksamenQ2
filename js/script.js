@@ -61,17 +61,17 @@ function displayMultiplePosts() {
   for (let i = 0; i < posts.length; i++) {
     let title = posts[i].title.rendered;
     let iconImg = posts[i].better_featured_image.source_url;
-    listContainer.innerHTML += createContainer(title, posts[i], iconImg);
+    listContainer.innerHTML += createContainer(title,  posts[i], iconImg);
   }
 }
 
 function createContainer(title, post, img) {
   return (
     `<div id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
+    `<a href="post.html?${post.slug}"><img src=` +
+    img + 
+    ` alt = "${post.title.rendered} Crest" ></a><br>` +
     post.excerpt.rendered +
-    "<img src=" +
-    img +
-    ` alt = "${post.title.rendered} Crest" > <br>` +
     `<a class ="hyperlink" href="post.html?${post.slug}" >Read more</a>` +
     "</div>"
   );
