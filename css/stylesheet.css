@@ -188,6 +188,7 @@ header {
     min-height: calc(450px - 7.5vw); 
     position: relative;
     box-shadow: 2px 2px #7B7A72;
+    background-color: var(--clr--tertiary);
 
 }
 

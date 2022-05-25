@@ -11,14 +11,35 @@
     <title>blog exam</title>
   </head>
   <body onload="javascript:contactPage()">
-    <header></header>
+    <div class="contentWrap">
+      <header>
+  
+        <nav class="navbar">
+          <input id="hamburger-menu" type="checkbox" />
+          <label for="hamburger-menu"><span id="menu-icon"></span></label>
+          <a class="logo-wrapper" href="index.html">
+            <img
+              src="./multimedia/Runeterra_Logo.png"
+              alt="Runeterra Logo, returns user to home page."
+              class="logo"
+            /> 
+          </a>
+          <div class="overlay"></div>
+          <ul class="navmenu">
+            <li class="nav-item current"><a href="index.html">Home</a></li>
+            <li class="nav-item">
+              <a href="./list.html">All posts</a>
+            </li>
+            <li class="nav-item">
+              <a href="./about.html">About us</a>
+            </li>
+            <li class="nav-item"><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
     <main>
-      <div class="links">
-        <a href="./index.html">home</a>
-        <a href="./about.html">about</a>
-        <a href="./list.html">list of posts</a>
-        <a href="./contact.html">contact us</a>
-      </div>
+      <h1 id="title">Explore Runeterra</h1>
+
       <noscript
         >Please enable javascript to view information on this site!</noscript
       >
@@ -56,8 +77,25 @@
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
       </form>
+
+
+      <noscript
+        >Please enable javascript to view information on this site!</noscript
+      >
+
+
     </main>
-    <footer></footer>
+    </div>
+    <footer>
+      <p>
+        Explore Runeterra isn’t endorsed by Riot Games and doesn’t reflect the
+        views or opinions of Riot Games or anyone officially involved in producing or
+        managing League of Legends.<br />
+        League of Legends and Riot Games are trademarks or registered trademarks
+        of Riot Games, Ltd. League of Legends © Riot Games, Ltd.
+      </p>
+
+    </footer>
     <script src="./js/script.js"></script>
   </body>
 </html>
