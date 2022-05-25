@@ -72,7 +72,7 @@ function createContainer(title, post, img) {
     img + 
     ` alt = "${post.title.rendered} Crest" ></a><br>` +
     post.excerpt.rendered +
-    `<a class ="hyperlink" href="post.html?${post.slug}" >Read more</a>` +
+    `<a class ="aButtons" id ="readmore" href="post.html?${post.slug}" >Read more</a>` +
     "</div>"
   );
 }

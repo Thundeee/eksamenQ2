@@ -18,8 +18,8 @@ html {
     --fs-500: 22px;
     --fs-700: 28px;
   
-    --ff-main: "Quicksand", sans-serif;
-    --ff-secondary: "EB Garamond", serif;
+    --ff-main: "";
+    --ff-secondary: "";
   }
 
 
@@ -162,6 +162,17 @@ header {
     height: 8vh;
   }
 
+
+  /* Title */
+
+  #title {
+    font-size: var(--fs-700);
+    text-align: center;
+    font-weight: bolder;
+  }
+
+
+
 /* MAIN HOME PAGE */
   main {
     margin-top: 15vh;
@@ -174,6 +185,9 @@ header {
 
 .container div {
     border: 1px solid black;
+    min-height: calc(450px - 7.5vw); 
+    position: relative;
+    box-shadow: 2px 2px #7B7A72;
 
 }
 
@@ -186,7 +200,7 @@ header {
 
 .container div a:nth-child(5) {
 
-margin: 1vw;
+  margin: 1vw;
 }
 
 .container div img {
@@ -197,43 +211,78 @@ margin: 1vw;
   margin-left: auto;
   margin-right: auto;
   padding-top: 1vw;
+  
 
 }
 
 
 .container div p {
 margin: 1vw;
-
 }
 
 /* BUTTONS */
 
-button {
-    color: white;
-    cursor: pointer;
-    padding: 15px 28px;
-    background-color: darkcyan;
-    border: none;
-}
+
 
 .bttnsCaroussel {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 5vw;
+    
+}
+
+.bttnsCaroussel a {
+  padding: 15px 28px;
+}
+
+/* Makes user not able to highlight the text in the button */
+.bttnsCaroussel a::selection {
+  opacity: 0%;
 }
 
 .bttnsHome {
-    margin-top: 20vh;
+    margin-top: 5vh;
     display: flex;
     justify-content: space-evenly;
 }
 
-.bttnsHome button {
+.bttnsHome a {
     font-size: var(--fs-700);
     padding: 4vh 4vw;
+    text-align: center;
+}
+
+.aButtons {
+  color: white;
+  background-color: darkcyan;
+  text-decoration: none;
+  padding: 10px;
+  font-family: var(--ff-main);
+  transition: opacity .2s;
 
 }
+
+
+.aButtons:hover {
+  bottom: 2px;
+  opacity: 70%;
+  font-family: var(--ff-main);
+  cursor: pointer;
+}
+
+#readmore {
+  position: absolute;
+  bottom: 2px;
+  color: white;
+  background-color: darkcyan;
+  text-decoration: none;
+  padding: 10px;
+  font-family: var(--ff-main);
+  transition: opacity .2s
+}
+
+
 
 /* Footer */
 footer {
@@ -253,9 +302,40 @@ footer {
 
 
 @media (min-width: 1024px) {
-   .container div:not(.current) {
+
+
+.container div:not(.current) {
     display: block;
 } 
+
+.container {
+  display: flex;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.container div {
+  width: 25%;
+  justify-content: center;
+  margin-right: 5%;
+  margin-left: 5%;
+  min-height: calc(655px - 7.5vw); /* 580px */
+  position: relative;
+}
+
+ .readmore {
+  bottom: 2px;
+}
+
+.readmore:hover {
+  bottom: 3px;
+}
+
+
+.buttonsHome a {
+  max-width: calc(350px - 10vw);
+  min-width: calc(300px - 10vw);
+}
 
 
 }
