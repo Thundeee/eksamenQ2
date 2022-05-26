@@ -56,7 +56,7 @@ header {
   
   .navbar label #menu-icon {
     float: right;
-    top: 2.5vh;
+    top: 3vw;
     right: 5%;
   }
   
@@ -159,13 +159,15 @@ header {
   }
   
   .logo {
-    height: 8vh;
+    height: 10vw;
+    float: left;
   }
 
 
   /* Title */
 
   #title {
+    margin-bottom: 5vh;
     font-size: var(--fs-700);
     text-align: center;
     font-weight: bolder;
@@ -305,6 +307,60 @@ footer {
 @media (min-width: 1024px) {
 
 
+  /* Navbar + header */
+
+
+
+
+  
+
+
+  .navbar label {
+    display: none;
+  }
+
+  .navmenu {
+    display: flex;
+    flex-direction: row;
+    gap: var(--flex-gap, 1em);
+    list-style: none;
+    max-height: inherit;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+margin-right: 5%;
+margin-top: 50px;
+  }
+
+
+
+  .logo {
+    float: none;
+    height: 100px;
+    position: relative;
+    top: 5px;
+    left: 10px;
+
+}
+
+
+
+  .currentNavItem {
+    text-decoration: underline;
+  }
+
+
+  /* Hides home */
+  .navmenu > li:nth-child(1) {
+    display: none;
+  }
+
+
+
+  
+
+/* Home page*/
 .container div:not(.current) {
     display: block;
 } 
@@ -324,11 +380,11 @@ footer {
   position: relative;
 }
 
- .readmore {
+ #readmore {
   bottom: 2px;
 }
 
-.readmore:hover {
+#readmore:hover {
   bottom: 3px;
 }
 
