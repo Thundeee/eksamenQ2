@@ -40,10 +40,10 @@
     <main>
       <h1 id="title">Explore Runeterra</h1>
 
-      <noscript
-        >Please enable javascript to view information on this site!</noscript
-      >
-      <h2 id="contactHeader"><br />Get in Contact!<br /><br /></h2>
+        <div class="contactPageWrapper">
+      <h2 id="contactHeader">Get in Contact!</h2>
+      <p>Anything you think we should add to the page, or something you are not sure about?<br>
+        Please use the form underneath to get in contact with us!</p><br>
 
       <form id="contactInfo">
         <div>
@@ -65,19 +65,20 @@
 
         <div>
           <label for="msgContent"></label>
-          <input
+          <textarea
+            rows="10"
             type="text"
             id="msgContent"
-            placeholder="Your message"
-            required
-          />
+            placeholder="Your Message" required></textarea>
           <span id="msgContentMsg" color="red"></span>
         </div>
 
+        <div class="contactBttns">
         <button type="submit">Submit</button>
         <button type="reset">Reset</button>
+      </div>
       </form>
-
+</div>
 
       <noscript
         >Please enable javascript to view information on this site!</noscript

@@ -13,7 +13,7 @@ const form = document.querySelector("form#contactInfo");
 let nameInp = document.querySelector("input#name");
 let subjectInp = document.querySelector("input#subject");
 let emailInp = document.querySelector("input#email");
-let msgContentInp = document.querySelector("input#msgContent");
+let msgContentInp = document.querySelector("textarea#msgContent");
 
 let nameMsg = document.querySelector("span#nameMsg");
 let subjectMsg = document.querySelector("span#subjectMsg");

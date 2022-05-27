@@ -66,6 +66,12 @@ header {
     position: relative;
     bottom: 1em;
   }
+
+
+
+  .currentNavItem {
+    text-decoration: underline;
+  }
   
   #menu-icon,
   #menu-icon:before,
@@ -201,7 +207,7 @@ header {
     border: 1px solid black;
     min-height: calc(450px - 7.5vw); 
     position: relative;
-    box-shadow: 2px 2px #7B7A72;
+    box-shadow: -4px 4px #7B7A72;
     background-color: var(--clr--tertiary);
 
 }
@@ -234,6 +240,79 @@ header {
 .container div p {
 margin: 1vw;
 }
+
+
+/* Contact page */
+
+
+.contactPageWrapper {
+  text-align: center;
+
+}
+
+#contactInfo {
+  margin: auto;
+  padding: 32px;
+  width: calc(175px + 10vw);
+  display: flex;
+  flex-direction: column;
+  background-color: lightcyan;
+  border: 1px solid;
+  box-shadow: 5px 5px 20px 5px  lightcyan ;
+}
+
+
+div > input {
+  position: relative;
+  left: 5%;
+  width: 90%;
+  padding: 16px 0;
+  border: none;
+  border-bottom: 1px solid;
+  background-color: lightcyan;
+  margin-top: 2rem;
+}
+
+textarea {
+  position: relative;
+  left: 5%;
+  width: 90%;
+  margin-top: 2rem;
+  background-color: lightcyan;
+  resize: none;
+  border: 1px solid black;
+}
+
+::placeholder {
+  color: gray;  
+}
+
+div > input:focus, textarea:focus {
+  outline: none;
+  
+}
+
+div > span {
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.contactBttns {
+  margin-top: 2.5vw;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.contactBttns > button {
+  width: 25%;
+  padding: 5%;
+  box-sizing : content-box;
+
+
+}
+
 
 /* BUTTONS */
 
@@ -355,12 +434,6 @@ margin-top: 50px;
     left: 10px;
 
 }
-
-
-
-  .currentNavItem {
-    text-decoration: underline;
-  }
 
 
   /* Hides home */
