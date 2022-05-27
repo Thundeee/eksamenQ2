@@ -56,25 +56,43 @@ async function fetchAll() {
 /**
  * function that displays more than 1 post at a time
  */
-function displayMultiplePosts() {
+function displayMultiplePosts(isList = false) {
   let listContainer = document.querySelector(".list-container");
-  for (let i = 0; i < posts.length; i++) {
+  for (let i = 0; i < posts.length; i++) { 
     let title = posts[i].title.rendered;
     let iconImg = posts[i].better_featured_image.source_url;
-    listContainer.innerHTML += createContainer(title,  posts[i], iconImg);
+    listContainer.innerHTML += createContainer(title,  posts[i], iconImg, isList);
   }
 }
 
-function createContainer(title, post, img) {
-  return (
-    `<div id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
-    `<a href="post.html?${post.slug}"><img src=` +
-    img + 
-    ` alt = "${post.title.rendered} Crest" ></a><br>` +
-    post.excerpt.rendered +
-    `<a class ="aButtons" id ="readmore" href="post.html?${post.slug}" >Read more</a>` +
-    "</div>"
-  );
+function createContainer(title, post, img, isList = false) {
+  // return (
+  //   `<div class ="${isList ? "listContainer" : ""}" id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
+  //   `<a href="post.html?${post.slug}"><img src=` +
+  //   img + 
+  //   ` alt = "${post.title.rendered} Crest" ></a><br>` +
+  //   post.excerpt.rendered +
+  //   `<a class ="${isList ? "" : "aButtons"}" id ="${isList ? "" : "readmore"}" href="post.html?${post.slug}" >Read more</a>` +
+  //   "</div>"
+  // );
+  return isList
+    ? (
+      `<div class ="listContainer" id = ${title.replace(/[ ]/g, "_")}_container>` +
+      `<div> <h1>${title}</h1><a href="post.html?${post.slug}"><img src=` +
+      img + 
+      ` alt = "${post.title.rendered} Crest" ></a></div>` +
+      post.excerpt.rendered +
+      `<a class ="aButtons" id ="" href="post.html?${post.slug}" >Read more</a>` +
+      "</div>"
+    ) : (
+      `<div id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
+      `<a href="post.html?${post.slug}"><img src=` +
+      img + 
+      ` alt = "${post.title.rendered} Crest" ></a><br>` +
+      post.excerpt.rendered +
+      `<a class ="aButtons" id ="readmore" href="post.html?${post.slug}" >Read more</a>` +
+      "</div>"
+    )
 }
 
 /**
@@ -210,14 +228,14 @@ function resetter() {
  */
 async function fetchList() {
   posts = await fetchApi(postList);
-  displayMultiplePosts(posts);
+  displayMultiplePosts(posts, true);
 }
 
 async function testPress() {
   alrPosted += 10;
   postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
   await fetchList();
-  console.log(posts.length + "rngueiu");
+  console.log(posts.length);
   if (posts.length < 10) {
     postBtn = document.getElementById("morePosts");
     postBtn.style = "display: none;";

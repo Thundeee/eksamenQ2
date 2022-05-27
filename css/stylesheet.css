@@ -193,6 +193,11 @@ header {
 
 
 
+
+
+  
+
+
 /* MAIN HOME PAGE */
   main {
     margin-top: 15vh;
@@ -242,6 +247,57 @@ margin: 1vw;
 }
 
 
+/*ALL POSTS PAGE*/
+
+.listContainer {
+  display: grid;
+  grid-template-rows: 30% calc(70% - 18vw) 100px;
+  grid-template-columns: 1fr;
+  border-style: solid;
+  margin: 0 max(5%, 10vw) 2vw max(5%, 10vw);
+  min-height: fit-content;
+  max-height: calc(500px - 8vw);
+}
+
+.listContainer > div {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  align-items: center;
+  margin: 0 2vw 0 2vw;
+}
+
+.listContainer > div > h1 {
+  margin-left: 15vw;
+  order: 2;
+}
+
+.listContainer > p {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-inline: 5%;
+  max-width: 60vw;
+}
+
+.listContainer > a {
+  grid-row-start: 3;
+  grid-row-end: 3;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 5%;
+  
+}
+
+.listContainer > div > a > img{
+  width: calc(50px + 6vw );
+  height: auto;
+}
+
+.listContainer > div > a {
+  margin-block: 12vw;
+}
+
+
 /* Contact page */
 
 
@@ -258,7 +314,7 @@ margin: 1vw;
   flex-direction: column;
   background-color: lightcyan;
   border: 1px solid;
-  box-shadow: 5px 5px 20px 5px  lightcyan ;
+  box-shadow: 1px 1px lightcyan ;
 }
 
 
@@ -478,6 +534,68 @@ margin-top: 50px;
   max-width: calc(350px - 10vw);
   min-width: calc(300px - 10vw);
 }
+
+/*List of posts page*/
+
+
+.listContainer {
+  grid-template-columns: 35% 60%;
+  grid-template-rows: 25% 50% 25%;
+  margin: 0 20vw 2vw 20vw;
+  width: fit-content;
+}
+
+.listContainer > div {
+  display: block;
+}
+
+.listContainer > div > h1 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.listContainer > div > a {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  margin-block: 0;
+}
+
+.listContainer > div > h1,
+.listContainer > div > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0;
+}
+
+.listContainer > p {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  max-height: 80%;
+  margin-inline: 5%;
+}
+
+.listContainer > a {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+
+.listContainer > div > a {
+
+}
+
+.listContainer > div > a > img{
+  width: auto;
+  height: auto;
+}
+
 
 
 }
