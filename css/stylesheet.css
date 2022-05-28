@@ -1,8 +1,4 @@
-html {
-  background-color: darkgray;
-  margin: 0;
-  padding: 0;
-}
+
 
 @keyframes loading {
   0% {
@@ -26,31 +22,41 @@ html {
 }
 
 /*Setting up variables*/
-/*
---clr--main: navy;
---clr--secondary: whitesmoke;
---clr--tertiary: gray;
---clr--text: black;
-
-*/
 :root {
-  --clr--main: wheat;
-  --clr--secondary: whitesmoke;
-  --clr--tertiary: #597ca8;
+  --clr--main: navy;
+  --clr--secondary: whitesmoke; 
+  --clr--tertiary: #b4b4b4;
+  --clr--quaternary: #67b3e0;
   --clr--text: black;
 
   --fs-300: 16px;
-  --fs-400: 18px;
   --fs-500: 22px;
   --fs-700: 28px;
 
-  --ff-main: "";
-  --ff-secondary: "";
+  --ff-main: "Asap+Condensed", sans-seriff;
+  --ff-secondary: "Unna",seriff;
+}
+
+
+html {
+  background-color: var(--clr--tertiary);
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: var(--ff-main);
+  font-size: var(--fs-300);
+
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--ff-secondary);
 }
 
 /* Header*/
 header {
-  background-color: var(--clr--main);
+  background-color: var(--clr--secondary);
   color: var(--clr--text);
   padding: 10px;
   font-size: var(--fs-500);
@@ -140,7 +146,7 @@ header {
 }
 
 .navbar input:checked ~ .overlay {
-  background-color: var(--clr--secondary);
+  background-color: var(--clr--tertiary);
   bottom: 0;
   left: 0;
   height: calc(100% - 10vw - 20px);
@@ -219,12 +225,12 @@ main {
   min-height: calc(450px - 7.5vw);
   position: relative;
   box-shadow: -4px 4px #7b7a72;
-  background-color: var(--clr--tertiary);
+  background-color: var(--clr--quaternary);
 }
 
 .container div h1 {
   text-align: center;
-  background-color: aliceblue;
+  background-color: var(--clr--secondary);
   margin: 0;
 }
 
@@ -243,6 +249,7 @@ main {
 
 .container div p {
   margin: 1vw;
+  color: var(--clr--text);
 }
 
 /*ALL POSTS PAGE*/
@@ -311,34 +318,34 @@ main {
   width: calc(175px + 10vw);
   display: flex;
   flex-direction: column;
-  background-color: lightcyan;
+  background-color: var(--clr--quaternary);
   border: 1px solid;
-  box-shadow: 1px 1px lightcyan;
+  box-shadow: 1px 1px var(--clr--quaternary);
 }
 
 div > input {
-  position: relative;
-  left: 5%;
-  width: 90%;
+  display: grid;
+  place-items: center;
+  width: 100%;
   padding: 16px 0;
   border: none;
   border-bottom: 1px solid;
-  background-color: lightcyan;
+  background-color: var(--clr--quaternary);
   margin-top: 2rem;
 }
 
 textarea {
-  position: relative;
-  left: 5%;
-  width: 90%;
+  display: grid;
+  place-items: center;
+  width: 100%;
   margin-top: 2rem;
-  background-color: lightcyan;
+  background-color: var(--clr--quaternary);
   resize: none;
   border: 1px solid black;
 }
 
 ::placeholder {
-  color: gray;
+  color: var(--clr--text);
 }
 
 div > input:focus,
@@ -362,6 +369,9 @@ div > span {
   width: 25%;
   padding: 5%;
   box-sizing: content-box;
+  background-color: var(--clr--main);
+  color: white;
+
 }
 
 /*ABOUT PAGE*/
@@ -431,7 +441,7 @@ div > span {
 
 .aButtons {
   color: white;
-  background-color: darkcyan;
+  background-color: var(--clr--main);
   text-decoration: none;
   padding: 10px;
   font-family: var(--ff-main);
@@ -448,9 +458,6 @@ div > span {
 #readmore {
   position: absolute;
   bottom: 2px;
-  color: white;
-  background-color: darkcyan;
-  text-decoration: none;
   padding: 10px;
   font-family: var(--ff-main);
   transition: opacity 0.2s;

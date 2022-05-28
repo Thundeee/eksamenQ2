@@ -114,10 +114,8 @@ async function postPage() {
     .replace(/\b[a-z]/g, (capital) =>
       capital.toUpperCase()
     )} - Explore Runeterra`; // credit for inspiration https://stackoverflow.com/a/16750282
-  let imgTest = query + "Hero";
-  fullImage = await fetchApi(mediaPost + imgTest);
   fullPost = await fetchApi(singlePost + query);
-  displayPost(fullPost, fullImage);
+  displayPost(fullPost);
 }
 
 /**
@@ -126,13 +124,9 @@ async function postPage() {
 function displayPost() {
   let PostBody = document.querySelector(".content");
   let iconImg = fullPost[0].better_featured_image.source_url;
-  let heroImg = fullImage[0].guid.rendered;
 
   PostBody.innerHTML =
     `<h1>${fullPost[0].title.rendered}</h1>` +
-    "<img src=" +
-    heroImg +
-    ` alt = " Picture of ${fullPost[0].title.rendered}" > <br>` +
     fullPost[0].content.rendered +
     "<img src=" +
     iconImg +
