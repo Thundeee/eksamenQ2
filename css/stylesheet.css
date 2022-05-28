@@ -26,6 +26,13 @@ html {
 }
 
 /*Setting up variables*/
+/*
+--clr--main: navy;
+--clr--secondary: whitesmoke;
+--clr--tertiary: gray;
+--clr--text: black;
+
+*/
 :root {
   --clr--main: wheat;
   --clr--secondary: whitesmoke;
@@ -587,8 +594,6 @@ footer p {
     grid-row-end: 3;
   }
 
-  .listContainer > div > a {
-  }
 
   .listContainer > div > a > img {
     width: auto;
