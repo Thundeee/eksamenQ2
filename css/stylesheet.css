@@ -2,6 +2,8 @@ html {
     background-color: darkgray;
     margin: 0;
     padding: 0;
+
+
 }
 
 
@@ -298,6 +300,13 @@ margin: 1vw;
 }
 
 
+#morePosts {
+
+    display: inline-block;
+    margin-left: calc(50% - 38px);
+}
+
+
 /* Contact page */
 
 
@@ -370,6 +379,22 @@ div > span {
 }
 
 
+/*ABOUT PAGE*/
+
+.aboutPageWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 5vh 10vw;
+  
+}
+
+.aboutPageWrapper > h2 {
+
+  border-bottom: 1px solid black;
+}
+
+
+
 /* BUTTONS */
 
 
@@ -436,7 +461,7 @@ div > span {
 
 /* Footer */
 footer {
-    margin-top: 10vh;
+    margin-top: 3vw;
     border-top: 1px solid black;
     display: inline-block;
     width: 100%;
@@ -445,9 +470,16 @@ footer {
 
   }
 
+  footer p {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    line-height: 1.6;
 
-.contentWrap { /*  Credits to https://stackoverflow.com/a/36160277 for this */
-    min-height: calc(100vh - 80px); 
+  }
+
+
+.contentWrap {
+    min-height: 80vh; 
 }
 
 
