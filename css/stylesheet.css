@@ -7,6 +7,28 @@ html {
 }
 
 
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  margin: 20px auto;
+  border-radius: 50%;
+  border-top: solid black 1px;
+  border-right: solid black 1px;
+  border-bottom: solid black 1px;
+  border-left: solid white 1px;
+  height: 150px;
+  width: 150px;
+  animation: loading 1s linear infinite;
+}
+
+
 
 /*Setting up variables*/
 :root {
@@ -379,12 +401,16 @@ div > span {
 }
 
 
+
+
+
+
 /*ABOUT PAGE*/
 
 .aboutPageWrapper {
   display: flex;
   flex-direction: column;
-  margin: 5vh 10vw;
+  margin: 0px 10vw;
   
 }
 
@@ -393,6 +419,33 @@ div > span {
   border-bottom: 1px solid black;
 }
 
+
+.teamContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.teamContainer > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 5%;
+  
+
+}
+.teamContainer > div > img {
+  width: 128px;
+  box-shadow: 0px 45px blanchedalmond;
+
+
+}
+
+.teamContainer > div > p {
+  font-weight: bold;
+}
 
 
 /* BUTTONS */
@@ -628,6 +681,13 @@ margin-top: 50px;
   height: auto;
 }
 
+
+
+/* About Page*/
+.teamContainer > div > img {
+
+  width: 256px;
+}
 
 
 }

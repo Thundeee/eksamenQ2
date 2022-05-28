@@ -22,8 +22,15 @@ let msgContentMsg = document.querySelector("span#msgContentMsg");
 
 let container = document.querySelector(".container");
 
+
+// caroussel stuff
 let posts = [];
 let carousselPosts = [];
+
+
+//loader
+let loader = document.querySelector(".loader")
+
 
 /**
  * universal function to fetch
@@ -32,6 +39,7 @@ async function fetchApi(api) {
   try {
     let response = await fetch(api);
     if (response.ok) {
+      loader.style.display = "none";
       return await response.json();
     } else {
       alert(
