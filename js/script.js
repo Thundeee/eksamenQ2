@@ -22,15 +22,16 @@ let msgContentMsg = document.querySelector("span#msgContentMsg");
 
 let container = document.querySelector(".container");
 
-
 // caroussel stuff
 let posts = [];
 let carousselPosts = [];
-
+let currentPost = 0;
 
 //loader
-let loader = document.querySelector(".loader")
+let loader = document.querySelector(".loader");
 
+//more posts buttons
+let listBttns = document.getElementById("morePosts");
 
 /**
  * universal function to fetch
@@ -66,41 +67,40 @@ async function fetchAll() {
  */
 function displayMultiplePosts(isList = false) {
   let listContainer = document.querySelector(".list-container");
-  for (let i = 0; i < posts.length; i++) { 
+  for (let i = 0; i < posts.length; i++) {
     let title = posts[i].title.rendered;
     let iconImg = posts[i].better_featured_image.source_url;
-    listContainer.innerHTML += createContainer(title,  posts[i], iconImg, isList);
+    listContainer.innerHTML += createContainer(
+      title,
+      posts[i],
+      iconImg,
+      isList
+    );
   }
 }
 
+/**
+ * Function that creates all containers for list and home page
+ */
 function createContainer(title, post, img, isList = false) {
-  // return (
-  //   `<div class ="${isList ? "listContainer" : ""}" id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
-  //   `<a href="post.html?${post.slug}"><img src=` +
-  //   img + 
-  //   ` alt = "${post.title.rendered} Crest" ></a><br>` +
-  //   post.excerpt.rendered +
-  //   `<a class ="${isList ? "" : "aButtons"}" id ="${isList ? "" : "readmore"}" href="post.html?${post.slug}" >Read more</a>` +
-  //   "</div>"
-  // );
   return isList
-    ? (
-      `<div class ="listContainer" id = ${title.replace(/[ ]/g, "_")}_container>` +
-      `<div> <h1>${title}</h1><a href="post.html?${post.slug}"><img src=` +
-      img + 
-      ` alt = "${post.title.rendered} Crest" ></a></div>` +
-      post.excerpt.rendered +
-      `<a class ="aButtons" id ="" href="post.html?${post.slug}" >Read more</a>` +
-      "</div>"
-    ) : (
-      `<div id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
-      `<a href="post.html?${post.slug}"><img src=` +
-      img + 
-      ` alt = "${post.title.rendered} Crest" ></a><br>` +
-      post.excerpt.rendered +
-      `<a class ="aButtons" id ="readmore" href="post.html?${post.slug}" >Read more</a>` +
-      "</div>"
-    )
+    ? `<div class ="listContainer" id = ${title.replace(
+        /[ ]/g,
+        "_"
+      )}_container>` +
+        `<div> <h1>${title}</h1><a href="post.html?${post.slug}"><img src=` +
+        img +
+        ` alt = "${post.title.rendered} Crest" ></a></div>` +
+        post.excerpt.rendered +
+        `<a class ="aButtons" id ="" href="post.html?${post.slug}" >Read more</a>` +
+        "</div>"
+    : `<div id = ${title.replace(/[ ]/g, "_")}_container><h1>${title}</h1>` +
+        `<a href="post.html?${post.slug}"><img src=` +
+        img +
+        ` alt = "${post.title.rendered} Crest" ></a><br>` +
+        post.excerpt.rendered +
+        `<a class ="aButtons" id ="readmore" href="post.html?${post.slug}" >Read more</a>` +
+        "</div>";
 }
 
 /**
@@ -109,13 +109,20 @@ function createContainer(title, post, img, isList = false) {
 async function postPage() {
   let query = location.search;
   if (!query) return (location.href = "index.html");
-  document.title = `My blog |${query.replace(/[?-]/g, " ")}`;
+  document.title = `${query
+    .replace(/[?-]/g, " ")
+    .replace(/\b[a-z]/g, (capital) =>
+      capital.toUpperCase()
+    )} - Explore Runeterra`; // credit for inspiration https://stackoverflow.com/a/16750282
   let imgTest = query + "Hero";
   fullImage = await fetchApi(mediaPost + imgTest);
   fullPost = await fetchApi(singlePost + query);
   displayPost(fullPost, fullImage);
 }
 
+/**
+ * Displays single post on post page
+ */
 function displayPost() {
   let PostBody = document.querySelector(".content");
   let iconImg = fullPost[0].better_featured_image.source_url;
@@ -232,13 +239,17 @@ function resetter() {
 }
 
 /**
- * list
+ * list page function
  */
 async function fetchList() {
   posts = await fetchApi(postList);
   displayMultiplePosts(posts, true);
+  listBttns.style = "display: inline-block;";
 }
 
+/**
+ * Adds more posts to list page
+ */
 async function testPress() {
   alrPosted += 10;
   postList = `https://www.lini.dev/wp-json/wp/v2/posts?per_page=10&offset=${alrPosted}`;
@@ -253,10 +264,8 @@ async function testPress() {
 }
 
 /**
- * Caroussel
+ * Caroussel function for home page
  */
-let currentPost = 0;
-
 function createCaroussel() {
   let arr = [];
   for (let post of posts) {
@@ -278,7 +287,9 @@ function changePost(change) {
   if (currentPost > carousselPosts.length - 1) currentPost = 0;
   if (currentPost < 0) currentPost = carousselPosts.length - 1;
 }
-
+/**
+ * Function that sorts and displays the correct posts in the caroussel
+ */
 function getPosts() {
   let a,
     b,
