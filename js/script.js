@@ -122,15 +122,15 @@ async function postPage() {
  * Displays single post on post page
  */
 function displayPost() {
-  let PostBody = document.querySelector(".content");
+  let PostBody = document.querySelector(".contentPost");
   let iconImg = fullPost[0].better_featured_image.source_url;
 
   PostBody.innerHTML =
-    `<h1>${fullPost[0].title.rendered}</h1>` +
-    fullPost[0].content.rendered +
-    "<img src=" +
+    `<div id = "titlePost" ><img src=` +
     iconImg +
-    ` alt = "${fullPost[0].title.rendered} Crest" > <br>`;
+    ` alt = "${fullPost[0].title.rendered} Crest" >` +
+    `<h1>${fullPost[0].title.rendered}</h1></div>` +
+    fullPost[0].content.rendered;
 }
 
 /**
