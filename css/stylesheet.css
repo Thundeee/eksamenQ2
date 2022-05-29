@@ -450,6 +450,7 @@ div > span {
 /* MODAL */
 
 .modalJA {
+  cursor: pointer;
   display: none;
   position: fixed; 
   z-index: 1; 
