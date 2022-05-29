@@ -209,6 +209,7 @@ function validate(event) {
   event.preventDefault();
 
   let contactHeader = document.getElementById("contactHeader");
+  let infoTextContact = document.getElementById("infoText");
 
   let submittedName = nameInp.value.trim();
   nameMsg.innerHTML = "";
@@ -262,10 +263,13 @@ function validate(event) {
     contactHeader.innerHTML =
       "<br>Your request was successfully received! Press continue to return to the home page. ";
     form.innerHTML = "";
+    infoTextContact.innerHTML = "";
+    form.style = "background-color: var(--clr--tertiary); border: none; box-shadow: none;";
 
-    let reButton = document.createElement("button");
+    let reButton = document.createElement("a");
     reButton.innerHTML = "Continue";
     reButton.id = "return";
+    reButton.className = "aButtons";
     form.appendChild(reButton);
 
     document.getElementById("return").onclick = function () {

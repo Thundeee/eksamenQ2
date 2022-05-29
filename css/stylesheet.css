@@ -222,7 +222,7 @@ main {
 
 .container div {
   border: 1px solid black;
-  min-height: calc(460px - 7.5vw);
+  min-height: calc(500px - 8vw);
   position: relative;
   box-shadow: -4px 4px #7b7a72;
   background-color: var(--clr--quaternary);
@@ -478,6 +478,8 @@ div > span {
 .close {
   color: var(--clr--secondary);
   float: right;
+  margin-right: 5%;
+
   font-size: 50px;
   font-weight: bold;
 }
