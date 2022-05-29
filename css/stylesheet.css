@@ -438,6 +438,7 @@ div > span {
   align-items: center;
 }
 .contentPost figure img {
+  cursor: pointer;
   width: 70vw;
   height: auto;
 }
@@ -450,7 +451,6 @@ div > span {
 /* MODAL */
 
 .modalJA {
-  cursor: pointer;
   display: none;
   position: fixed; 
   z-index: 1; 
@@ -476,6 +476,7 @@ div > span {
 }
 
 .close {
+  cursor: pointer;
   color: var(--clr--secondary);
   float: right;
   font-size: 50px;
