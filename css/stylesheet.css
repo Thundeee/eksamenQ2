@@ -448,7 +448,7 @@ div > span {
   align-items: flex-start;
 }
 
-/* MODAL */
+/* MODAL  | CREDIT FOR INFSPIRATION: https://www.w3schools.com/howto/howto_css_modals.asp */
 
 .modalJA {
   display: none;
@@ -614,7 +614,7 @@ footer p {
     justify-content: center;
     margin-right: 5%;
     margin-left: 5%;
-    min-height: calc(655px - 7.5vw); /* 580px */
+    min-height: calc(655px - 7vw);
     position: relative;
   }
 

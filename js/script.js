@@ -272,7 +272,7 @@ function validate(event) {
     reButton.className = "aButtons";
     form.appendChild(reButton);
 
-    document.getElementById("return").onclick = function () {
+    document.getElementById("return").onclick  = () =>  {
       location.href = "index.html";
     };
   } else {
