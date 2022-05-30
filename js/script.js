@@ -125,71 +125,44 @@ function displayPost() {
   let PostBody = document.querySelector(".contentPost");
   let iconImg = fullPost[0].better_featured_image.source_url;
 
-   PostBody.innerHTML +=
+  PostBody.innerHTML +=
     `<div id = "titlePost" ><img src=` +
     iconImg +
     ` alt = "${fullPost[0].title.rendered} Crest" >` +
     `<h1>${fullPost[0].title.rendered}</h1></div>` +
     fullPost[0].content.rendered;
 
-    
-
-
-    
-    
-
-
-    
-
-
-
-let bigImgModal = document.querySelector(".modalPic");
+  let bigImgModal = document.querySelector(".modalPic");
   let modalOpener = document.querySelector("figure > img");
-let picTester = modalOpener.getAttribute("src");
+  let picTester = modalOpener.getAttribute("src");
 
-
-    bigImgModal.innerHTML = `<img src = "${picTester}">;`
+  bigImgModal.innerHTML = `<img src = "${picTester}">;`;
 
   modalOpener.onclick = () => modalTest();
-
 }
-
 
 // MODAL TEST
 
-
-
 function modalTest() {
+  let modal = document.querySelector(".modalJA");
 
-let modal = document.querySelector(".modalJA");
+  modal.style.display = "block";
+  console.log(modal);
 
-console.log("in")
-modal.style.display = "block";
-console.log(modal.style.display)
-console.log(modal)
+  let outsideModal = document.querySelector(".close");
 
-
-let outsideModal = document.querySelector(".close");
-console.log(outsideModal)
-  
-// When the user clicks on <span> (x), close the modal
-outsideModal.onclick = () => {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = () => {
-  if (event.target == modal) {
+  // When the user clicks on <span> (x), close the modal
+  outsideModal.onclick = () => {
     modal.style.display = "none";
-  }
+  };
 
-
-
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = () => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 }
-}
-
-
-
 
 /**
  * contact page
@@ -264,7 +237,8 @@ function validate(event) {
       "<br>Your request was successfully received! Press continue to return to the home page. ";
     form.innerHTML = "";
     infoTextContact.innerHTML = "";
-    form.style = "background-color: var(--clr--tertiary); border: none; box-shadow: none;";
+    form.style =
+      "background-color: var(--clr--tertiary); border: none; box-shadow: none;";
 
     let reButton = document.createElement("a");
     reButton.innerHTML = "Continue";
@@ -272,7 +246,7 @@ function validate(event) {
     reButton.className = "aButtons";
     form.appendChild(reButton);
 
-    document.getElementById("return").onclick  = () =>  {
+    document.getElementById("return").onclick = () => {
       location.href = "index.html";
     };
   } else {
@@ -313,7 +287,7 @@ async function testPress() {
   console.log(posts.length);
   if (posts.length < 10) {
     postBtn = document.getElementById("morePosts");
-    postBtn.style = "display: none;"; 
+    postBtn.style = "display: none;";
   }
   console.log(alrPosted);
   console.log(postList);
